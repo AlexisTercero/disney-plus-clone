@@ -60,7 +60,7 @@ const Wrap = styled.div`
 
 
     img {
-        border: 4px solid transparent;
+        border: 6px solid transparent;
         border-radius: 4px;
         width: 100%;
         height: 100%;
