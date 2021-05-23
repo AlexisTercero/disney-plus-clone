@@ -8,6 +8,7 @@ function Home() {
     return (
         <Container>
             <ImgSlider/>
+            <Viewers />
         </Container>
     )
 }
