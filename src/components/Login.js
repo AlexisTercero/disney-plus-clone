@@ -20,7 +20,7 @@ export default Login
 
 
 const Container = styled.div`
-    position: relative;
+
     height: calc(100vh - 70px);
     display: flex;
     align-items: center;
@@ -29,6 +29,7 @@ const Container = styled.div`
     &:before {
         background-position: top;
         background: url("/images/login-background.jpg");
+        height: 100%;
         background-size: cover;
         background-repeat: no-repeat;
         content: "";
