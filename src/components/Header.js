@@ -1,37 +1,51 @@
 import React from 'react'
+import { auth, provider } from "../firebase"
 import styled from "styled-components"
+import { selectUserName, selectUserPhoto, } from "../features/user/userSlice"
+import { useSelector } from "react-redux"
+
 
 function Header() {
+    const userName = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
+
     return (
         <Nav>
             <Logo src="/images/logo.svg"/>
-            <NavMenu>
-            <a>
-              <img src="/images/home-icon.svg" alt="HOME" alt="img"/>
+      {!userName ? (
+        <LoginContainer>
+            <Login>Login</Login>
+        </LoginContainer>        
+      ) : (
+        <>
+          <NavMenu>
+            <a href="/home">
+              <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
             </a>
             <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" alt="img"/>
+              <img src="/images/search-icon.svg" alt="SEARCH" />
               <span>SEARCH</span>
             </a>
             <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" alt="img"/>
+              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
               <span>WATCHLIST</span>
             </a>
             <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" alt="img"/>
+              <img src="/images/original-icon.svg" alt="ORIGINALS" />
               <span>ORIGINALS</span>
             </a>
             <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" alt="img"/>
+              <img src="/images/movie-icon.svg" alt="MOVIES" />
               <span>MOVIES</span>
             </a>
             <a>
-              <img src="/images/series-icon.svg" alt="SERIES" alt="img"/>
+              <img src="/images/series-icon.svg" alt="SERIES" />
               <span>SERIES</span>
             </a>
-            </NavMenu>
-            <UserImg src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2004/09/16/2ramones1.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=77791434228523055167af4c48e24ad1" alt="img"/>
+          </NavMenu>
+        </>
+      )}
         </Nav>
     )
 }
@@ -101,3 +115,26 @@ const UserImg = styled.img`
     cursor: pointer;
 
 `
+
+const LoginContainer = styled.div`
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+`
+
+const Login = styled.a`
+    border-radius: 4px;
+    padding: 8px 16px;
+    border: 1px solid #f9f9f9;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background-color: rgba(0,0,0,0.6);
+    transition: all 0.2s ease 0s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f9f9f9;
+      color:#000;
+      border-color: transparent;
+    }
+`;
