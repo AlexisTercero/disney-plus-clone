@@ -1,36 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
+import { useParams } from "react-router-dom"
+import db from "../firebase"
 
-function Detail() {
+function Detail  () {
+    const { id } = useParams();
+    const [movie, setMovie] = useState({}); //atento a las llaves dentro de los parentesis del useState sin eso tira error!!!
+  
+    useEffect(() => {
+      db.collection("movies")
+        .doc(id)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            setMovie(doc.data());
+          } else {
+            console.log("no such document in firebase 🔥");
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
+        });
+    }, []);
+
     return (
         <Container>
             <Background>
-                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-199952-GettyImages-86131109.jpg?resize=1800,1200&w=1800" />
+                <img src={movie.backgroundImg} alt="img"/>
             </Background>
             <ImageTitle>
-                <img src="https://slingshotecommerce.com/wp-content/uploads/2017/08/Ramones-Logo2.png" />
+                <img src={movie.titleImg} alt="img"/>
             </ImageTitle>
             <Controls>
                 <PlayButton>
-                    <img src="images/play-icon-black.png" />
-                    <span>PLAY</span>
+                        <img src="/images/play-icon-black.png" alt="img"/>
+                        <span>PLAY</span>
                 </PlayButton>
                 <TrailerButton>
-                <img src="images/play-icon-white.png" />
+                <img src="/images/play-icon-white.png" alt="img"/>
                     <span>TRAILER</span>
                 </TrailerButton>
                 <AddButton>
                     <span>+</span>
                 </AddButton>
                 <GroupWatchButton>
-                    <img src="/images/group-icon.png" />
+                    <img src="/images/group-icon.png" alt="img"/>
                 </GroupWatchButton>
             </Controls>
             <SubTitle>
-                2003 | 1h 50min | Documentary, Biography, Music  
+               {movie.subTitle}  
             </SubTitle>
             <Description>
-            In 1974, the New York City music scene was shocked into consciousness by the violently new and raw sound of a band of misfits from Queens, called The Ramones. Playing in a seedy Bowery bar to a small group of fellow struggling musicians, the band struck a chord of disharmony that rocked the foundation of the mid-'70s music scene. This quartet of unlikely rock stars traveled across the country and around the world connecting with the disenfranchised everywhere, while sparking a movement that would resonate with two generations of outcasts across the globe. Although the band never reached the top of the Billboard charts, it managed to endure by maintaining a rigorous touring schedule for 22 years.
+                {movie.description}
             </Description>
         </Container>
     )

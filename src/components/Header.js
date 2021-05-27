@@ -6,32 +6,32 @@ function Header() {
         <Nav>
             <Logo src="/images/logo.svg"/>
             <NavMenu>
-
-              <img src="/images/home-icon.svg" alt="HOME" />
+            <a>
+              <img src="/images/home-icon.svg" alt="HOME" alt="img"/>
               <span>HOME</span>
-           
-
-              <img src="/images/search-icon.svg" alt="SEARCH" />
+            </a>
+            <a>
+              <img src="/images/search-icon.svg" alt="SEARCH" alt="img"/>
               <span>SEARCH</span>
-           
-
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+            </a>
+            <a>
+              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" alt="img"/>
               <span>WATCHLIST</span>
-           
-           
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
+            </a>
+            <a>
+              <img src="/images/original-icon.svg" alt="ORIGINALS" alt="img"/>
               <span>ORIGINALS</span>
-           
-           
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
+            </a>
+            <a>
+              <img src="/images/movie-icon.svg" alt="MOVIES" alt="img"/>
               <span>MOVIES</span>
-           
-           
-              <img src="/images/series-icon.svg" alt="SERIES" />
+            </a>
+            <a>
+              <img src="/images/series-icon.svg" alt="SERIES" alt="img"/>
               <span>SERIES</span>
-           
+            </a>
             </NavMenu>
-            <UserImg src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2004/09/16/2ramones1.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=77791434228523055167af4c48e24ad1"/>
+            <UserImg src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2004/09/16/2ramones1.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=77791434228523055167af4c48e24ad1" alt="img"/>
         </Nav>
     )
 }
