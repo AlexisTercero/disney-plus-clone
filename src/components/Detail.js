@@ -60,44 +60,53 @@ function Detail  () {
 export default Detail
 
 const Container = styled.div`
-    min-height: calc(100vh - 70px);
-    padding: 0 calc(3.5vw + 5px);
     position: relative;
+    min-height: calc(100vh - 250px);
+    overflow-x: hidden;
+    display: block;
+    padding: 0 calc(3.5vw + 5px);
 `
 
 const Background = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+
     right: 0;
     z-index: -1;
     opacity: 0.8;
 
     
     img{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
     }
 
 `
 const ImageTitle = styled.div`
-    height: 30vh;
-    min-height: 170px;
-    width: 35vw;
-    min-width: 200px;
+  align-items: flex-end;
+  display: flex;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-`
+  justify-content: flex-start;
+  margin: 0px auto;
+  height: 23vw;
+  min-height: 170px;
+  padding-bottom: 24px;
+  width: 100%;
+  img {
+    max-width: 600px;
+    min-width: 200px;
+    width: 35vw;
+  }
+`;
 
 const Controls = styled.div`
     display: flex;
     align-items: center;
+    flex-flow: row nowrap;
+    margin: 24px 0px;
+    min-height: 56px;
 `
 const PlayButton = styled.button`
     border-radius: 4px;
@@ -106,11 +115,16 @@ const PlayButton = styled.button`
     margin-right: 22px;
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 56px;
     background-color: rgb(249,249,249);
     border: none; 
     letter-spacing: 1.8px;
     cursor: pointer;
+    
+    img {
+    width: 32px;
+    }
 
     &:hover {
         background-color: rgb(198,198,198);
