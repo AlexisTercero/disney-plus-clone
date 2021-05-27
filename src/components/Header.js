@@ -82,7 +82,12 @@ function Header() {
               <span>SERIES</span>
             </a>
           </NavMenu>
-          <UserImg onClick={signOut} src={userPhoto} alt={userName} />
+          <SignOut>
+            <UserImg src={userPhoto} alt={userName} />
+            <DropDown>
+              <span onClick={signOut}>Sign out</span>
+            </DropDown>
+          </SignOut>
         </>
       )}
         </Nav>
@@ -92,12 +97,18 @@ function Header() {
 export default Header
 
 const Nav = styled.nav`
-    height: 70px;
-    background-color: #090b13;
-    display: flex;
-    align-items: center;
-    padding: 0 36px;
-    overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #090b13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 36px;
+  letter-spacing: 16px;
+  z-index: 3;
 `
 const Logo = styled.img`
     width: 80px;
@@ -176,4 +187,40 @@ const Login = styled.a`
       color:#000;
       border-color: transparent;
     }
+`
+const DropDown = styled.div`
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  background: rgb(19, 19, 19);
+  border: 1px solid rgba(151, 151, 151, 0.34);
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  width: 100px;
+  opacity: 0;
 `;
+
+const SignOut = styled.div`
+  position: relative;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  ${UserImg} {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    ${DropDown} {
+      opacity: 1;
+      transition-duration: 1s;
+    }
+  }
+`;
+
